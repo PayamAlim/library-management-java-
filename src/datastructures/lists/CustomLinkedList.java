@@ -31,9 +31,12 @@ public class CustomLinkedList<T> implements LinkedList<T>{
     public void addLast(T t) {
         Node<T> newNode = new Node<>(t);
 
+        if (head == null) {
+            tail = head = newNode;
+            return;
+        }
         newNode.prev = tail;
         tail.next = newNode;
-
         tail = newNode;
     }
 

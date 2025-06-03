@@ -14,12 +14,8 @@ public class CustomStack<T> implements Queue<T> {
 
     @Override
     public boolean add(Object t) {
-        try {
-            list.addLast((T) t);
-            return true;
-        } catch (Exception e) {
-            throw new IllegalStateException("No memory!");
-        }
+        list.addLast((T) t);
+        return true;
     }
 
     @Override
