@@ -3,28 +3,28 @@ package management;
 import library.Member;
 import library.Transaction;
 
+import java.util.HashMap;
+
 public class MemberManager {
-    // TODO: Define a data structure that stores memberIds and their matching member objects
+    private HashMap<String, Member> members;
 
     public MemberManager() {
-        // TODO: Initialize your data structure here
+        members = new HashMap<>();
     }
 
     public void addMember(Member member) {
-        // TODO: Add member and their id to your data structure
+        members.put(member.getMemberId(), member);
     }
 
     public Member getMember(String memberId) {
-        // TODO
-        return null;
+        return members.get(memberId);
     }
 
     public void recordTransaction(String memberId, Transaction transaction) {
-        // TODO
+        getMember(memberId).addTransaction(transaction);
     }
 
     public Transaction getLastTransaction(String memberId) {
-        // TODO
-        return null;
+        return getMember(memberId).getLastTransaction();
     }
 }
