@@ -5,7 +5,7 @@ import library.Book;
 import library.Member;
 
 public class BookManager {
-    CustomHashMap<String, Book> books;
+    private CustomHashMap<String, Book> books;
 
     private MemberManager memberManager;
 

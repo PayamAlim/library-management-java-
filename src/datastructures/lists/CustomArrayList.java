@@ -44,11 +44,11 @@ public class CustomArrayList<T> implements List<T> {
     }
 
     @Override
-    public boolean add(Object o) {
-        if (o == null) throw new NullPointerException("Cannot add null value!");
+    public boolean add(T t) {
+        if (t == null) throw new NullPointerException("Cannot add null value!");
 
         ensureCapacity();
-        elements[size] = o;
+        elements[size] = t;
         size ++;
         return true;
     }
