@@ -23,7 +23,7 @@ public class BookManager {
     }
 
     public boolean isBookAvailable(String isbn) {
-        return books.get(isbn) != null;
+        return books.get(isbn).isAvailable();
     }
 
     public void setBookAvailability(String isbn, boolean available) {

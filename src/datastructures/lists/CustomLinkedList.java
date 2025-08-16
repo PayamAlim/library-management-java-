@@ -25,14 +25,18 @@ public class CustomLinkedList<T> implements LinkedList<T>{
         head.prev = newNode;
 
         head = newNode;
+
+        size ++;
     }
 
     @Override
     public void addLast(T t) {
         Node<T> newNode = new Node<>(t);
+        size ++;
 
         if (head == null) {
-            tail = head = newNode;
+            head = newNode;
+            tail = newNode;
             return;
         }
         newNode.prev = tail;
@@ -48,7 +52,10 @@ public class CustomLinkedList<T> implements LinkedList<T>{
         T removedData = head.data;
 
         head = head.next;
-        head.prev = null;
+        if (head != null)
+            head.prev = null;
+
+        size --;
 
         return removedData;
     }
@@ -63,16 +70,22 @@ public class CustomLinkedList<T> implements LinkedList<T>{
         tail = tail.prev;
         tail.next = null;
 
+        size --;
+
         return removedData;
     }
 
     @Override
     public T getFirst() {
+        if (isEmpty())
+            throw new NoSuchElementException("Linked list is empty");
         return head.data;
     }
 
     @Override
     public T getLast() {
+        if (isEmpty())
+            throw new NoSuchElementException("Linked list is empty");
         return tail.data;
     }
 
@@ -80,6 +93,7 @@ public class CustomLinkedList<T> implements LinkedList<T>{
     public void clear() {
         head = null;
         tail = null;
+        size = 0;
     }
 
     @Override
@@ -125,6 +139,8 @@ public class CustomLinkedList<T> implements LinkedList<T>{
         tail.next = newNode;
 
         tail = newNode;
+
+        size ++;
         return true;
     }
 
@@ -146,6 +162,8 @@ public class CustomLinkedList<T> implements LinkedList<T>{
             if (current.data.equals(o)) {
                 current.prev.next = current.next;
                 current.next.prev = current.prev;
+
+                size --;
                 return true;
             }
             current = current.next;
